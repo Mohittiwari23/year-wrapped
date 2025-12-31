@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "Our Year Wrapped",
+    "subtitle": "A year full of care, love and admiration for each other",
+    "period": {
+      "from": "2025-02-13",
+      "to": "2025-12-30"
+    }
+  },
+
+  "overview": {
+    "total_messages": 268975,
+    "by_sender": {
+      "you": 153421,
+      "her": 115554
+    },
+    "by_platform": {
+      "whatsapp": 102234,
+      "instagram": 166741
+    },
+    "headline": "We need a hobby bruh!!",
+    "subtext": "Almost 269,000 messages across a year of showing up."
+  },
+
+  "timeline": {
+    "conversation_days": 315,
+    "longest_streak_days": 307,
+    "headline": "WEEEEEEEEEEEEEEEE",
+    "highlight": "307 days of yapping in a row"
+  },
+
+  "time_of_day": {
+    "peak_hour": 0,
+    "late_night_messages": 77831,
+    "late_night_days": 254,
+    "headline": "Sleep schedule got FUCKEDDDD",
+    "subtext": "We mostly spoke at night (Romantic Styles)"
+  },
+
+  "conversation_habits": {
+    "most_common_day_starter": "you",
+    "faster_replier": "her",
+    "headline": "I reached out more. You were already there.",
+    "display": {
+      "primary": "I usually started the day (Duhhhh)",
+      "secondary": "You replied faster (My Cutie)"
+    }
+  },
+
+  "time_together": {
+    "busiest_day": {
+      "date": "2025-06-15",
+      "message_count": 3604
+    },
+    "headline": "We too OLD for this",
+    "highlights": [
+      "254 late nights together",
+      "307 days of uninterrupted conversation"
+    ]
+  },
+
+  "conversation_style": {
+    "questions_vs_statements": {
+      "leans_question": "you"
+    },
+    "headline": "You always made me feel wanted and admired",
+    "interpretation": "I asked questions because you made answers worth giving."
+  },
+
+  "language_style": {
+    "defining_words": {
+      "you": "nahi",
+      "her": "woah"
+    },
+    "headline": "We both had your own language.",
+    "caption": "Our most used words (apart from lovey dovey stuff and sex)"
+  },
+
+  "daily_rhythm": {
+    "average_morning_time": {
+      "you": "09:06",
+      "her": "10:28"
+    },
+    "earlier_waker": "you",
+    "headline": "Who woke up earlier.",
+    "interpretation": "I woke up earlier. I slept earlier too lmao. You were always there waiting for me"
+  },
+
+  "inside_joke": {
+    "sorry_count": {
+      "you": 956,
+      "her": 677,
+      "winner": "you"
+    },
+    "headline": "Someone apologizes more than necessary.",
+    "interpretation": "It’s me. I'm sooo losing that bet."
+  },
+
+  "love_language": {
+    "i_love_you_count": {
+      "you": 567,
+      "her": 397,
+      "winner": "you"
+    },
+    "headline": "Who said I Love you more",
+    "interpretation": "I did because I LOVE YOU MOREEEEE."
+  },
+
+  "uplift": {
+    "count": 2798,
+    "example": {
+      "date": "2025-07-09",
+      "summary": "I went quiet. You stayed. Thanks for always being there for me."
+    },
+    "headline": "Times when you changed my mood through your words",
+    "caption": "It happened more than 2,700 times."
+  },
+
+  "closing": {
+    "headline": "This year wasn’t measured in days.",
+    "final_line": "It was measured in showing up.",
+    "signature": "I love you so muchhh baby. THIS TOOK ME WAY TOO FUCKING LONG"
+  }
+}

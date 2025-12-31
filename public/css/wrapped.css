@@ -1,0 +1,169 @@
+/* =========================
+   WRAPPED SECTION BASE
+   ========================= */
+
+#wrapped {
+  min-height: 100vh;
+  padding: 0;
+  background: var(--bg-soft);
+  
+  /* Make it a flex container to center the viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapped-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 30;   
+  isolation: isolate;
+}
+
+/* =========================
+   BACKGROUND MEMORY LAYER
+   ✅ CHANGED: Make it contained to landing section only
+   ========================= */
+
+#memory-layer {
+  position: absolute; /* ✅ CHANGED from fixed */
+  inset: 0;
+  z-index: 1; /* ✅ Behind content but above background */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ✅ NEW: Only show memory layer inside landing section */
+#landing {
+  position: relative; /* ✅ Create positioning context */
+  z-index: auto;
+}
+
+#landing #memory-layer {
+  display: block; /* ✅ Visible in landing */
+}
+
+#wrapped #memory-layer,
+#finale #memory-layer {
+  display: none; /* ✅ Hidden in other sections */
+}
+
+/* =========================
+   MEMORY IMAGE BASE STYLE
+   ========================= */
+
+.memory {
+  position: absolute;
+  max-width: 300px;
+  height: auto;
+  
+  opacity: 0.6;
+  
+  filter: none;
+  mix-blend-mode: normal;
+  
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover effect (optional) */
+.memory:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+/* =========================
+   MEMORY POSITIONS
+   Spread across the entire background
+   ========================= */
+
+.memory-1 {
+  top: 8%;
+  left: 5%;
+  max-width: 280px;
+  transform: rotate(-5deg);
+}
+
+.memory-2 {
+  top: 35%;
+  right: 22%;
+  max-width: 320px;
+  transform: rotate(3deg);
+}
+
+.memory-3 {
+  top: 45%;
+  left: 12%;
+  max-width: 250px;
+  transform: rotate(8deg);
+}
+
+.memory-4 {
+  bottom: 40%;
+  right: 12%;
+  max-width: 300px;
+  transform: rotate(-4deg);
+}
+
+.memory-5 {
+  bottom: 55%;
+  left: 38%;
+  max-width: 260px;
+  transform: translateX(-50%) rotate(2deg);
+}
+
+.memory-6 {
+  top: 60%;
+  right: 10%;
+  max-width: 290px;
+  transform: rotate(8deg);
+}
+
+/* =========================
+   FLOATING ANIMATION
+   ========================= */
+
+.memory {
+  animation: float-gentle 8s ease-in-out infinite;
+}
+
+.memory-1 { animation-delay: 0s; }
+.memory-2 { animation-delay: 1s; }
+.memory-3 { animation-delay: 2s; }
+.memory-4 { animation-delay: 3s; }
+.memory-5 { animation-delay: 4s; }
+.memory-6 { animation-delay: 5s; }
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-20px) rotate(var(--rotation, 0deg));
+  }
+}
+
+/* Preserve individual rotations during float */
+.memory-1 { --rotation: -5deg; }
+.memory-2 { --rotation: 3deg; }
+.memory-3 { --rotation: 8deg; }
+.memory-4 { --rotation: -4deg; }
+.memory-5 { --rotation: 2deg; }
+.memory-6 { --rotation: 8deg; }
+
+/* =========================
+   SAFETY: CONTENT ABOVE MEMORY
+   ========================= */
+
+main {
+  position: relative;
+  z-index: 20;
+}

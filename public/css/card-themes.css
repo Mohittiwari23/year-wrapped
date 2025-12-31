@@ -1,0 +1,46 @@
+/* card-themes.css */
+
+/* Default card typography */
+.card h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.card p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* =========================
+   THEMES
+   ========================= */
+
+.theme-rose {
+  --accent: var(--accent-rose);
+  background: #fff5f5;
+}
+
+.theme-lavender {
+  --accent: var(--accent-lavender);
+  background: #f7f5ff;
+}
+
+.theme-sage {
+  --accent: var(--accent-sage);
+  background: #f4faf8;
+}
+
+.theme-neutral {
+  --accent: var(--text-muted);
+  background: #ffffff;
+}
+
+/* Accent usage (subtle, editorial) */
+.card .accent {
+  color: var(--accent);
+}
+.card.theme-default {
+  --card-bg: #ffffff;
+}

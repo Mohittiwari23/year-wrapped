@@ -1,0 +1,85 @@
+/* =========================
+   FINALE SECTION
+   ========================= */
+
+#finale {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  overflow: hidden;
+}
+
+/* Background illustration */
+#finale::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6vh;
+  transform: translateX(-50%);
+  width: 90vw;
+  height: 50vh;
+
+  background-image: url("../images/finale-image.png");
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  opacity: 0.35;
+  filter: blur(1px);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Text container */
+.finale-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  text-align: center;
+  transform: translateY(8vh);
+}
+
+/* Poem body */
+.finale-poem {
+  font-family: "Source Serif 4", serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: #222;
+  opacity: 0.9;
+}
+
+/* Lead line */
+.poem-lead {
+  display: block;
+  font-family: "Source Serif 4", serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  color: #111;
+}
+
+/* Rhythm control */
+.finale-poem br + br {
+  display: block;
+  margin-top: 0.3rem;
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+   ========================= */
+
+@media (max-width: 768px) {
+  .finale-inner {
+    transform: translateY(-3vh);
+  }
+
+  #finale::before {
+    height: 40vh;
+    bottom: 4vh;
+  }
+}

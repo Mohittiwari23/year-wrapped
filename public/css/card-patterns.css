@@ -1,0 +1,55 @@
+/* card-patterns.css */
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✅ FIXED: Pattern layer behind content */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  z-index: -1; /* ✅ CHANGED: Behind card content */
+  pointer-events: none;
+}
+
+/* ✅ Ensure card-inner stays above patterns and background */
+.card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   PATTERNS
+   ========================= */
+
+.pattern-dots::before {
+  background:
+    radial-gradient(circle at 20% 30%, var(--accent) 2px, transparent 2px),
+    radial-gradient(circle at 70% 60%, var(--accent) 2px, transparent 2px);
+  background-size: 60px 60px;
+}
+
+.pattern-arcs::before {
+  background:
+    repeating-radial-gradient(
+      circle at 100% 0%,
+      var(--accent),
+      var(--accent) 2px,
+      transparent 2px,
+      transparent 14px
+    );
+}
+
+.pattern-waves::before {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 10px,
+      var(--accent) 12px,
+      transparent 14px
+    );
+}

@@ -1,0 +1,525 @@
+/* =========================
+   CARD VISUALS – LIVED-IN INTIMACY
+   Hand-drawn, symbolic elements that breathe with each card
+   ========================= */
+
+:root {
+  --visual-opacity: 0.08;
+  --visual-accent: var(--accent, #c67b7b);
+}
+
+/* Base: All visuals hidden until card is active */
+.card-visual {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms ease;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active .card-visual {
+  opacity: var(--visual-opacity);
+}
+
+/* Ensure card-inner stays above visuals */
+.card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =================================================
+   CARD 1: ENVELOPE (Opening gift)
+   ================================================= */
+
+.card--visual-envelope::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  right: 8%;
+  width: 140px;
+  height: 100px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 100'%3E%3Cpath d='M10 20 L70 60 L130 20 M10 20 L10 90 L130 90 L130 20' stroke='%23c67b7b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M10 20 L70 60 L130 20' stroke='%23c67b7b' stroke-width='2' fill='%23fff5f5' fill-opacity='0.3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-envelope::after {
+  animation: envelope-float 3000ms ease-in-out infinite;
+}
+
+@keyframes envelope-float {
+  0%, 100% {
+    opacity: 0.12;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.18;
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+
+/* =================================================
+   CARD 2: CONSTELLATION (Connected points)
+   ================================================= */
+
+.card--visual-constellation::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 300px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='50' cy='80' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='120' cy='120' r='2' fill='%23c67b7b'/%3E%3Ccircle cx='180' cy='90' r='2.5' fill='%23c67b7b'/%3E%3Ccircle cx='230' cy='140' r='2' fill='%23c67b7b'/%3E%3Ccircle cx='150' cy='200' r='3' fill='%23c67b7b'/%3E%3Cpath d='M50 80 Q85 100 120 120 Q150 105 180 90 Q205 115 230 140 Q190 170 150 200' stroke='%23c67b7b' stroke-width='1' fill='none' opacity='0.4' stroke-dasharray='4 4'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-constellation::before {
+  animation: constellation-twinkle 4000ms ease-in-out infinite;
+}
+
+@keyframes constellation-twinkle {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.15; }
+}
+
+
+/* =================================================
+   CARD 3: THREAD (Continuous line)
+   ================================================= */
+
+.card--visual-thread::before {
+  content: "";
+  position: absolute;
+  left: 5%;
+  top: 10%;
+  width: 4px;
+  height: 80%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--visual-accent) 20%,
+    var(--visual-accent) 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  opacity: 0;
+  transform-origin: top center;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-thread::before {
+  animation: thread-draw 2000ms ease-out forwards;
+}
+
+@keyframes thread-draw {
+  from {
+    opacity: 0;
+    height: 0%;
+  }
+  to {
+    opacity: 0.12;
+    height: 80%;
+  }
+}
+
+
+/* =================================================
+   CARD 4: MOON & STARS (Night sky)
+   ================================================= */
+
+.card--visual-moon::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30 20 Q40 40 30 60 Q50 50 60 40 Q50 30 40 20 Q35 15 30 20' fill='%23c67b7b' opacity='0.15'/%3E%3Ccircle cx='75' cy='25' r='1.5' fill='%23c67b7b'/%3E%3Ccircle cx='85' cy='40' r='1' fill='%23c67b7b'/%3E%3Ccircle cx='70' cy='50' r='1.2' fill='%23c67b7b'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-moon::after {
+  animation: moon-glow 3500ms ease-in-out infinite;
+}
+
+@keyframes moon-glow {
+  0%, 100% {
+    opacity: 0.12;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.2;
+    filter: brightness(1.3);
+  }
+}
+
+
+/* =================================================
+   CARD 5: ARROWS (Dialogue)
+   ================================================= */
+
+.card--visual-arrows::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 100px;
+  margin-left: -100px;
+  margin-top: -50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Cpath d='M20 50 Q60 30 100 50' stroke='%23c67b7b' stroke-width='2' fill='none' marker-end='url(%23arrow)' opacity='0.5'/%3E%3Cpath d='M180 50 Q140 70 100 50' stroke='%23c67b7b' stroke-width='2' fill='none' marker-end='url(%23arrow)' opacity='0.5'/%3E%3Cdefs%3E%3Cmarker id='arrow' markerWidth='10' markerHeight='10' refX='5' refY='5' orient='auto'%3E%3Cpolygon points='0,0 10,5 0,10' fill='%23c67b7b'/%3E%3C/marker%3E%3C/defs%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-arrows::before {
+  animation: arrows-breathe 2500ms ease-in-out infinite;
+}
+
+@keyframes arrows-breathe {
+  0%, 100% {
+    opacity: 0.08;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.14;
+    transform: scale(1.05);
+  }
+}
+
+
+/* =================================================
+   CARD 6: WINDOW (Shared space)
+   ================================================= */
+
+.card--visual-window::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 320px;
+  margin-left: -140px;
+  margin-top: -160px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 320'%3E%3Crect x='40' y='40' width='200' height='240' rx='8' stroke='%23c67b7b' stroke-width='3' fill='none' opacity='0.3'/%3E%3Cline x1='140' y1='40' x2='140' y2='280' stroke='%23c67b7b' stroke-width='2' opacity='0.2'/%3E%3Cline x1='40' y1='160' x2='240' y2='160' stroke='%23c67b7b' stroke-width='2' opacity='0.2'/%3E%3Crect x='50' y='50' width='180' height='220' rx='4' fill='url(%23windowGlow)' opacity='0.15'/%3E%3Cdefs%3E%3CradialGradient id='windowGlow'%3E%3Cstop offset='0%25' stop-color='%23c67b7b' stop-opacity='0.3'/%3E%3Cstop offset='100%25' stop-color='%23c67b7b' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-window::before {
+  animation: window-light 4000ms ease-in-out infinite;
+}
+
+@keyframes window-light {
+  0%, 100% {
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.12;
+  }
+}
+
+
+/* =================================================
+   CARD 7: QUESTION MARK (Curiosity)
+   ================================================= */
+
+.card--visual-question::after {
+  content: "?";
+  position: absolute;
+  top: 40%;
+  right: 12%;
+  font-size: 180px;
+  font-weight: 300;
+  color: var(--visual-accent);
+  opacity: 0;
+  line-height: 1;
+  font-family: Georgia, serif;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-question::after {
+  animation: question-echo 3000ms ease-in-out infinite;
+}
+
+@keyframes question-echo {
+  0%, 100% {
+    opacity: 0.05;
+    transform: scale(1) rotate(-5deg);
+  }
+  50% {
+    opacity: 0.12;
+    transform: scale(1.03) rotate(-3deg);
+  }
+}
+
+
+/* =================================================
+   CARD 8: QUOTATION MARKS (Voice)
+   ================================================= */
+
+.card--visual-quotes::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  font-size: 240px;
+  font-weight: 700;
+  color: var(--visual-accent);
+  opacity: 0;
+  line-height: 0.8;
+  font-family: Georgia, serif;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-quotes::before {
+  animation: quotes-pulse 2500ms ease-in-out infinite;
+}
+
+@keyframes quotes-pulse {
+  0%, 100% {
+    opacity: 0.06;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.11;
+    transform: scale(1.02);
+  }
+}
+
+
+/* =================================================
+   CARD 9: CLOCK DOTS (Ritual)
+   ================================================= */
+
+.card--visual-clock::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 240px;
+  margin-left: -120px;
+  margin-top: -120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Ccircle cx='120' cy='20' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='180' cy='40' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='220' cy='120' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='180' cy='200' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='120' cy='220' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='60' cy='200' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='20' cy='120' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='60' cy='40' r='3' fill='%23c67b7b'/%3E%3Ccircle cx='150' cy='30' r='2' fill='%23c67b7b'/%3E%3Ccircle cx='210' cy='80' r='2' fill='%23c67b7b'/%3E%3Ccircle cx='210' cy='160' r='2' fill='%23c67b7b'/%3E%3Ccircle cx='150' cy='210' r='2' fill='%23c67b7b'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-clock::before {
+  animation: clock-tick 8000ms linear infinite;
+}
+
+@keyframes clock-tick {
+  0% {
+    opacity: 0.08;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 0.08;
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =================================================
+   CARD 10: SMILE (Shared humor)
+   ================================================= */
+
+.card--visual-smile::after {
+  content: "";
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  width: 160px;
+  height: 80px;
+  margin-left: -80px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 80'%3E%3Cpath d='M20 20 Q80 60 140 20' stroke='%23c67b7b' stroke-width='3' fill='none' stroke-linecap='round' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-smile::after {
+  animation: smile-draw 1800ms ease-out forwards;
+}
+
+@keyframes smile-draw {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 200;
+  }
+  to {
+    opacity: 0.12;
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* =================================================
+   CARD 11: HEART (Overflowing)
+   ================================================= */
+
+.card--visual-heart::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: -100px;
+  margin-top: -100px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 160 C70 140 30 110 30 70 C30 45 50 30 70 30 C85 30 95 40 100 50 C105 40 115 30 130 30 C150 30 170 45 170 70 C170 110 130 140 100 160 Z' stroke='%23c67b7b' stroke-width='2' fill='none' opacity='0.3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-heart::before {
+  animation: heart-fill 2000ms ease-out forwards;
+}
+
+@keyframes heart-fill {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+}
+
+
+/* =================================================
+   CARD 12: LIFT (Support)
+   ================================================= */
+
+.card--visual-lift::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  top: 30%;
+  width: 80px;
+  height: 200px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 200'%3E%3Ccircle cx='40' cy='30' r='12' fill='%23c67b7b' opacity='0.2'/%3E%3Cellipse cx='40' cy='70' rx='18' ry='30' fill='%23c67b7b' opacity='0.15'/%3E%3Cline x1='15' y1='120' x2='30' y2='100' stroke='%23c67b7b' stroke-width='2' opacity='0.3'/%3E%3Cline x1='65' y1='120' x2='50' y2='100' stroke='%23c67b7b' stroke-width='2' opacity='0.3'/%3E%3Cpath d='M25 140 L40 120 L55 140' stroke='%23c67b7b' stroke-width='2' fill='none' opacity='0.25' stroke-linecap='round'/%3E%3Cpath d='M30 160 L40 145 L50 160' stroke='%23c67b7b' stroke-width='1.5' fill='none' opacity='0.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-lift::after {
+  animation: lift-rise 2500ms ease-out forwards;
+}
+
+@keyframes lift-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 0.12;
+    transform: translateY(-10px);
+  }
+}
+
+
+/* =================================================
+   CARD 13: EMBRACE (Unity)
+   ================================================= */
+
+.card--visual-embrace::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+  margin-left: -150px;
+  margin-top: -100px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Ccircle cx='120' cy='100' r='60' stroke='%23c67b7b' stroke-width='2' fill='none' opacity='0.15'/%3E%3Ccircle cx='180' cy='100' r='60' stroke='%23c67b7b' stroke-width='2' fill='none' opacity='0.15'/%3E%3Cellipse cx='150' cy='100' rx='30' ry='60' fill='%23c67b7b' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1; /* ✅ Behind content */
+}
+
+.card--active.card--visual-embrace::before {
+  animation: embrace-sync 3000ms ease-in-out infinite;
+}
+
+@keyframes embrace-sync {
+  0%, 100% {
+    opacity: 0.08;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.14;
+    transform: scale(1.03);
+  }
+}
+
+
+/* =================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================= */
+
+@media (max-width: 768px) {
+  /* Scale down visuals on mobile */
+  .card--visual-envelope::after,
+  .card--visual-moon::after,
+  .card--visual-question::after,
+  .card--visual-lift::after {
+    transform: scale(0.7);
+  }
+  
+  .card--visual-quotes::before {
+    font-size: 160px;
+  }
+  
+  .card--visual-constellation::before,
+  .card--visual-window::before,
+  .card--visual-clock::before,
+  .card--visual-embrace::before {
+    transform: scale(0.8);
+  }
+}
+
+
+/* =================================================
+   REDUCED MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .card-visual,
+  .card::before,
+  .card::after {
+    animation: none !important;
+  }
+  
+  .card--active .card-visual,
+  .card--active::before,
+  .card--active::after {
+    opacity: var(--visual-opacity);
+    transform: none;
+  }
+}

@@ -1,0 +1,790 @@
+/* =========================
+   ANIMATIONS — CARD-SPECIFIC EMOTIONAL SIGNATURES
+   ========================= */
+
+/* Motion tokens */
+:root {
+  --ease-soft: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-gentle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-liquid: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =================================================
+   BASE RULE: Reset animations when card loses active state
+   ================================================= */
+
+.card:not(.card--active) .card-inner > *:not(.metric) {
+  animation: none !important;
+  opacity: 1;
+  transform: none;
+}
+.card--active .metric {
+  opacity: 1;
+  animation-fill-mode: both;
+}
+
+.card:not(.card--active)::after,
+.card:not(.card--active)::before {
+  animation: none !important;
+  opacity: 0;
+}
+
+
+/* =================================================
+   CARD 1: META / INTRO — BREATH
+   ================================================= */
+
+.card--style-breath .card-inner {
+  animation: breath-scale 1200ms var(--ease-gentle) forwards;
+}
+
+.card--active.card--style-breath .card-inner > * {
+  opacity: 0;
+  animation: fade-up-soft 800ms var(--ease-soft) forwards;
+}
+
+.card--active.card--style-breath .card-title {
+  animation-delay: 100ms;
+  animation-name: title-expand;
+  animation-duration: 1000ms;
+}
+
+.card--active.card--style-breath .card-subtitle {
+  animation-delay: 300ms;
+}
+
+.card--active.card--style-breath .card-period {
+  animation-delay: 500ms;
+}
+
+@keyframes breath-scale {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes title-expand {
+  0% { 
+    opacity: 0; 
+    letter-spacing: -0.05em;
+    transform: translateY(10px);
+  }
+  100% { 
+    opacity: 1; 
+    letter-spacing: -0.03em;
+    transform: translateY(0);
+  }
+}
+
+
+/* =================================================
+   CARD 2: OVERVIEW — BURST (PARTICLE BLOOM)
+   ================================================= */
+
+.card--style-burst::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  opacity: 0;
+  background: 
+    radial-gradient(circle at 50% 50%, var(--accent) 0%, transparent 70%);
+  transform: scale(0.3);
+  z-index: 0;
+}
+
+.card--active.card--style-burst::before {
+  animation: burst-bloom 1400ms var(--ease-gentle) forwards;
+}
+
+.card--active.card--style-burst .metric {
+  opacity: 1;
+  animation: metric-burst 1000ms var(--ease-bounce) 400ms forwards;
+}
+
+.card--active.card--style-burst .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-burst .card-caption,
+.card--active.card--style-burst .card-subtext {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 600ms forwards;
+}
+
+@keyframes burst-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.08;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes metric-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* =================================================
+   CARD 3: TIMELINE — RHYTHM (CONCENTRIC RINGS)
+   ========================= */
+
+.card--style-rhythm::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  pointer-events: none;
+  opacity: 0;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.card--active.card--style-rhythm::after {
+  animation: ring-pulse 2000ms var(--ease-soft) infinite;
+}
+
+.card--active.card--style-rhythm .metric {
+  opacity: 0;
+  animation: tick-in 900ms var(--ease-bounce) 300ms forwards;
+}
+
+.card--active.card--style-rhythm .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+@keyframes ring-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.12;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes tick-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  70% {
+    transform: translateY(3px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =================================================
+   CARD 4: TIME OF DAY — DRIFT NIGHT (FLOATING STARS)
+   ========================= */
+
+.card--style-drift-night::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, var(--accent) 2px, transparent 2px),
+    radial-gradient(circle at 80% 40%, var(--accent) 1px, transparent 1px),
+    radial-gradient(circle at 50% 80%, var(--accent) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 30% 60%, var(--accent) 1px, transparent 1px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.card--active.card--style-drift-night::before {
+  animation: stars-float 3000ms linear infinite;
+}
+
+.card--active.card--style-drift-night .card-inner {
+  animation: night-darken 1200ms var(--ease-soft) forwards;
+}
+
+.card--active.card--style-drift-night .card-inner > * {
+  opacity: 0;
+  animation: fade-up-soft 800ms var(--ease-soft) forwards;
+}
+
+.card--active.card--style-drift-night .card-headline {
+  animation-delay: 100ms;
+}
+
+.card--active.card--style-drift-night .metric {
+  animation-delay: 300ms;
+}
+
+@keyframes stars-float {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 0.08;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes night-darken {
+  from { filter: brightness(1); }
+  to { filter: brightness(0.96); }
+}
+
+
+/* =================================================
+   CARD 5: CONVERSATION HABITS — WHISPER SPLIT
+   ========================= */
+
+.card--active.card--style-whisper-split .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-whisper-split .split-stats {
+  position: relative;
+}
+
+.card--active.card--style-whisper-split .split-stats::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  opacity: 0.2;
+  animation: divider-draw 800ms var(--ease-soft) 500ms forwards;
+}
+
+.card--active.card--style-whisper-split .stat-item:first-child {
+  opacity: 0;
+  animation: slide-from-left 800ms var(--ease-gentle) 300ms forwards;
+}
+
+.card--active.card--style-whisper-split .stat-item:last-child {
+  opacity: 0;
+  animation: slide-from-right 800ms var(--ease-gentle) 400ms forwards;
+}
+
+@keyframes divider-draw {
+  from { height: 0; opacity: 0; }
+  to { height: 100%; opacity: 0.2; }
+}
+
+@keyframes slide-from-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-from-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+
+/* =================================================
+   CARD 6: TIME TOGETHER — DRIFT WARM
+   ========================= */
+
+.card--active.card--style-drift-warm .card-inner {
+  animation: warm-glow 1400ms var(--ease-soft) forwards;
+}
+
+.card--active.card--style-drift-warm .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-drift-warm .highlight-item {
+  opacity: 0;
+  animation: float-in 900ms var(--ease-gentle) forwards;
+}
+
+.card--active.card--style-drift-warm .highlight-item:nth-child(1) {
+  animation-delay: 300ms;
+}
+
+.card--active.card--style-drift-warm .highlight-item:nth-child(2) {
+  animation-delay: 500ms;
+}
+
+.card--active.card--style-drift-warm .card-detail-box {
+  opacity: 0;
+  animation: fade-up-soft 800ms var(--ease-soft) 700ms forwards;
+}
+
+@keyframes warm-glow {
+  from { filter: brightness(1) saturate(0.95); }
+  to { filter: brightness(1.02) saturate(1.05); }
+}
+
+@keyframes float-in {
+  from { 
+    opacity: 0; 
+    transform: translateY(15px) translateX(-5px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) translateX(0);
+  }
+}
+
+
+/* =================================================
+   CARD 7: CONVERSATION STYLE — WHISPER TYPE
+   ========================= */
+
+.card--active.card--style-whisper-type .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-whisper-type .card-interpretation {
+  opacity: 0;
+  overflow: hidden;
+  animation: type-reveal 2000ms steps(60) 400ms forwards;
+}
+
+.card--active.card--style-whisper-type .card-detail {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 1800ms forwards;
+}
+
+@keyframes type-reveal {
+  from { 
+    opacity: 1;
+    max-height: 0;
+  }
+  to { 
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+
+/* =================================================
+   CARD 8: LANGUAGE STYLE — WHISPER INK
+   ========================= */
+
+.card--active.card--style-whisper-ink .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-whisper-ink .card-caption {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 300ms forwards;
+}
+
+.card--active.card--style-whisper-ink .word-value {
+  opacity: 0;
+  filter: blur(8px);
+  animation: ink-bleed 1200ms var(--ease-gentle) 500ms forwards;
+}
+
+.card--active.card--style-whisper-ink .word-item:nth-child(1) .word-value {
+  animation-delay: 600ms;
+}
+
+.card--active.card--style-whisper-ink .word-item:nth-child(2) .word-value {
+  animation-delay: 900ms;
+}
+
+@keyframes ink-bleed {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+
+/* =================================================
+   CARD 9: DAILY RHYTHM — RHYTHM CLOCK
+   ========================= */
+
+.card--style-rhythm-clock::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  pointer-events: none;
+  opacity: 0;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.card--active.card--style-rhythm-clock::after {
+  animation: clock-appear 1000ms var(--ease-gentle) 200ms forwards;
+}
+
+.card--active.card--style-rhythm-clock .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-rhythm-clock .time-value {
+  opacity: 0;
+  animation: tick-rotate 900ms var(--ease-bounce) forwards;
+}
+
+.card--active.card--style-rhythm-clock .time-item:nth-child(1) .time-value {
+  animation-delay: 400ms;
+}
+
+.card--active.card--style-rhythm-clock .time-item:nth-child(2) .time-value {
+  animation-delay: 600ms;
+}
+
+@keyframes clock-appear {
+  from { 
+    opacity: 0; 
+    transform: scale(0.7) rotate(-90deg);
+  }
+  to { 
+    opacity: 0.1; 
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes tick-rotate {
+  0% {
+    opacity: 0;
+    transform: rotate(-15deg) scale(0.9);
+  }
+  70% {
+    transform: rotate(3deg) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+
+/* =================================================
+   CARD 10: INSIDE JOKE — WHISPER POUR
+   ========================= */
+
+.card--active.card--style-whisper-pour .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-whisper-pour .comparison-label {
+  opacity: 0;
+  animation: fade-up-soft 600ms var(--ease-soft) forwards;
+}
+
+.card--active.card--style-whisper-pour .comparison-item:nth-child(1) .comparison-label {
+  animation-delay: 300ms;
+}
+
+.card--active.card--style-whisper-pour .comparison-item:nth-child(2) .comparison-label {
+  animation-delay: 400ms;
+}
+
+.card--active.card--style-whisper-pour .comparison-bar {
+  transform-origin: left center;
+  animation: pour-fill 1200ms var(--ease-liquid) forwards;
+}
+
+.card--active.card--style-whisper-pour .comparison-item:nth-child(1) .comparison-bar {
+  animation-delay: 500ms;
+}
+
+.card--active.card--style-whisper-pour .comparison-item:nth-child(2) .comparison-bar {
+  animation-delay: 800ms;
+}
+
+.card--active.card--style-whisper-pour .comparison-value {
+  opacity: 0;
+  animation: fade-up-soft 500ms var(--ease-soft) forwards;
+}
+
+.card--active.card--style-whisper-pour .comparison-item:nth-child(1) .comparison-value {
+  animation-delay: 1400ms;
+}
+
+.card--active.card--style-whisper-pour .comparison-item:nth-child(2) .comparison-value {
+  animation-delay: 1700ms;
+}
+
+.card--active.card--style-whisper-pour .card-interpretation {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 1900ms forwards;
+}
+
+@keyframes pour-fill {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+
+/* =================================================
+   CARD 11: LOVE LANGUAGE — BURST HEART
+   ========================= */
+
+.card--style-burst-heart::before {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  pointer-events: none;
+  opacity: 0;
+  background: 
+    radial-gradient(ellipse 40% 35% at 50% 45%, var(--accent) 0%, transparent 50%);
+  transform: scale(0.5);
+  z-index: 0;
+}
+
+.card--active.card--style-burst-heart::before {
+  animation: heart-bloom 1600ms var(--ease-gentle) forwards;
+}
+
+.card--active.card--style-burst-heart .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-burst-heart .metric {
+  opacity: 0;
+  animation: glow-pulse 1400ms var(--ease-gentle) 300ms forwards;
+}
+
+.card--active.card--style-burst-heart .card-caption,
+.card--active.card--style-burst-heart .card-interpretation,
+.card--active.card--style-burst-heart .love-split {
+  opacity: 0;
+  animation: fade-up-soft 800ms var(--ease-soft) forwards;
+}
+
+.card--active.card--style-burst-heart .card-caption {
+  animation-delay: 800ms;
+}
+
+.card--active.card--style-burst-heart .card-interpretation {
+  animation-delay: 1000ms;
+}
+
+.card--active.card--style-burst-heart .love-split {
+  animation-delay: 1200ms;
+}
+
+@keyframes heart-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  40% {
+    opacity: 0.2;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.12;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes glow-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+
+/* =================================================
+   CARD 12: UPLIFT — WHISPER LIFT
+   ========================= */
+
+.card--style-whisper-lift::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: 
+    linear-gradient(135deg, 
+      transparent 0%, 
+      var(--accent) 50%, 
+      transparent 100%);
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.card--active.card--style-whisper-lift::before {
+  animation: aurora-shimmer 4000ms ease-in-out infinite;
+}
+
+.card--active.card--style-whisper-lift .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 100ms forwards;
+}
+
+.card--active.card--style-whisper-lift .metric {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 300ms forwards;
+}
+
+.card--active.card--style-whisper-lift .card-caption {
+  opacity: 0;
+  animation: fade-up-soft 700ms var(--ease-soft) 500ms forwards;
+}
+
+.card--active.card--style-whisper-lift .uplift-example {
+  opacity: 0;
+  animation: lift-box 1000ms var(--ease-gentle) 700ms forwards;
+}
+
+@keyframes aurora-shimmer {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  50% {
+    opacity: 0.06;
+    transform: translateX(50%);
+  }
+}
+
+@keyframes lift-box {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+
+/* =================================================
+   CARD 13: CLOSING — BREATH FINAL
+   ========================= */
+
+.card--active.card--style-breath-final .card-inner {
+  animation: breath-scale 1400ms var(--ease-gentle) forwards;
+}
+
+.card--active.card--style-breath-final .card-headline {
+  opacity: 0;
+  animation: fade-up-soft 900ms var(--ease-soft) 200ms forwards;
+}
+
+.card--active.card--style-breath-final .card-final {
+  opacity: 0;
+  animation: fade-up-soft 900ms var(--ease-soft) 500ms forwards;
+}
+
+.card--active.card--style-breath-final .card-signature {
+  opacity: 0;
+  animation: signature-linger 1400ms var(--ease-gentle) 1000ms forwards;
+}
+
+/* Fade down other elements slightly when signature appears */
+.card--active.card--style-breath-final .card-headline,
+.card--active.card--style-breath-final .card-final {
+  animation-fill-mode: both;
+}
+
+@keyframes signature-linger {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =================================================
+   SHARED UTILITIES
+   ========================= */
+
+@keyframes fade-up-soft {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

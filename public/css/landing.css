@@ -1,0 +1,96 @@
+/* landing.css */
+
+#landing {
+  position: relative; /* ✅ Create positioning context for memory layer */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  /* background: var(--bg-main); */
+  overflow: hidden; /* ✅ Contain floating images */
+}
+
+/* ✅ Memory layer sits behind content */
+#landing #memory-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* ✅ Behind text */
+  pointer-events: none;
+}
+
+.landing-inner {
+  position: relative; /* ✅ Above memory layer */
+  z-index: 10;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  transform: translate(-5vw, 10vh);
+}
+
+.landing-inner h1 {
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+}
+
+.landing-inner p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+.landing-inner .hint {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+.eyebrow {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  opacity: 0.6;
+}
+.title-block {
+  margin-bottom: 1.2rem;
+}
+
+.title-line {
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+
+.title-line.primary {
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+}
+
+.title-line.secondary {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  opacity: 0.75;
+  margin-top: 0.2rem;
+}
+
+/* subtitle */
+.subtitle {
+  font-size: 0.95rem;
+  opacity: 0.6;
+  margin-top: 1.2rem;
+}
+
+/* hint already exists, but just in case */
+.hint {
+  margin-top: 2.5rem;
+  font-size: 0.8rem;
+  opacity: 0.45;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

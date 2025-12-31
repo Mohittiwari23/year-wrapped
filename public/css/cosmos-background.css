@@ -1,0 +1,217 @@
+/* =========================
+   COSMOS ROMANTIC THEME
+   Black on White with Celestial Elements
+   ========================= */
+
+/* ✨ ANIMATED PIXELATED STARS */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  background-image:
+    /* Large stars */
+    radial-gradient(2px 2px at 20% 30%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 80% 20%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 60% 70%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 30% 80%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 90% 60%, #000 1px, transparent 1px),
+    
+    /* Medium stars */
+    radial-gradient(1px 1px at 10% 50%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 50% 10%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 70% 40%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 40% 60%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 85% 80%, #000 1px, transparent 1px),
+    
+    /* Small stars */
+    radial-gradient(1px 1px at 15% 15%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 35% 35%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 65% 55%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 75% 75%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 95% 25%, #000 0.5px, transparent 0.5px);
+    
+  background-size: 
+    250px 250px, 300px 300px, 280px 280px, 320px 320px, 260px 260px,
+    200px 200px, 220px 220px, 240px 240px, 210px 210px, 230px 230px,
+    150px 150px, 170px 170px, 160px 160px, 180px 180px, 190px 190px;
+    
+  animation: stars-drift 120s linear infinite;
+}
+
+@keyframes stars-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
+
+/* 🌙 CELESTIAL ELEMENTS (Constellations) */
+#wrapped::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.48;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3C!-- Constellation 1 --%3E%3Ccircle cx='100' cy='100' r='3' fill='%23000'/%3E%3Ccircle cx='180' cy='150' r='2' fill='%23000'/%3E%3Ccircle cx='240' cy='120' r='2.5' fill='%23000'/%3E%3Cline x1='100' y1='100' x2='180' y2='150' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3Cline x1='180' y1='150' x2='240' y2='120' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3C!-- Constellation 2 --%3E%3Ccircle cx='700' cy='200' r='3' fill='%23000'/%3E%3Ccircle cx='780' cy='280' r='2' fill='%23000'/%3E%3Ccircle cx='820' cy='240' r='2.5' fill='%23000'/%3E%3Ccircle cx='760' cy='320' r='2' fill='%23000'/%3E%3Cline x1='700' y1='200' x2='780' y2='280' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3Cline x1='780' y1='280' x2='820' y2='240' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3Cline x1='780' y1='280' x2='760' y2='320' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3C!-- Constellation 3 --%3E%3Ccircle cx='300' cy='600' r='3' fill='%23000'/%3E%3Ccircle cx='360' cy='640' r='2' fill='%23000'/%3E%3Ccircle cx='400' cy='580' r='2.5' fill='%23000'/%3E%3Cline x1='300' y1='600' x2='360' y2='640' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3Cline x1='360' y1='640' x2='400' y2='580' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3Cline x1='400' y1='580' x2='300' y2='600' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3C!-- Constellation 4 --%3E%3Ccircle cx='600' cy='700' r='3' fill='%23000'/%3E%3Ccircle cx='650' cy='760' r='2' fill='%23000'/%3E%3Ccircle cx='720' cy='720' r='2.5' fill='%23000'/%3E%3Cline x1='600' y1='700' x2='650' y2='760' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3Cline x1='650' y1='760' x2='720' y2='720' stroke='%23000' stroke-width='0.5' opacity='0.4'/%3E%3C!-- Moon phases --%3E%3Ccircle cx='150' cy='800' r='20' fill='none' stroke='%23000' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M150 780 A20 20 0 0 1 150 820' fill='%23000' opacity='0.15'/%3E%3Ccircle cx='850' cy='150' r='25' fill='none' stroke='%23000' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M850 125 A25 25 0 0 0 850 175' fill='%23000' opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  animation: constellation-rotate 240s linear infinite;
+}
+
+@keyframes constellation-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 💫 FLOATING COSMIC DUST */
+.wrapped-viewport::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.08; /* ✅ CHANGED from 0.03 - more visible */
+  background-image:
+    radial-gradient(circle at 30% 40%, #000 1px, transparent 100px),
+    radial-gradient(circle at 70% 60%, #000 1px, transparent 120px),
+    radial-gradient(circle at 50% 80%, #000 1px, transparent 90px);
+  animation: cosmic-drift 60s ease-in-out infinite;
+}
+
+@keyframes cosmic-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.03;
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.1);
+    opacity: 0.05;
+  }
+}
+
+/* ✨ TWINKLING EFFECT */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ✨ ANIMATED PIXELATED STARS */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7; /* ✅ CHANGED from 0.4 */
+  background-image:
+    /* Large stars */
+    radial-gradient(2px 2px at 20% 30%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 80% 20%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 60% 70%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 30% 80%, #000 1px, transparent 1px),
+    radial-gradient(2px 2px at 90% 60%, #000 1px, transparent 1px),
+    
+    /* Medium stars */
+    radial-gradient(1px 1px at 10% 50%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 50% 10%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 70% 40%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 40% 60%, #000 1px, transparent 1px),
+    radial-gradient(1px 1px at 85% 80%, #000 1px, transparent 1px),
+    
+    /* Small stars */
+    radial-gradient(1px 1px at 15% 15%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 35% 35%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 65% 55%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 75% 75%, #000 0.5px, transparent 0.5px),
+    radial-gradient(1px 1px at 95% 25%, #000 0.5px, transparent 0.5px);
+    
+  background-size: 
+    250px 250px, 300px 300px, 280px 280px, 320px 320px, 260px 260px,
+    200px 200px, 220px 220px, 240px 240px, 210px 210px, 230px 230px,
+    150px 150px, 170px 170px, 160px 160px, 180px 180px, 190px 190px;
+    
+  animation: stars-drift 120s linear infinite;
+}
+
+/* 🎨 BLACK ON WHITE THEME ADJUSTMENTS */
+body {
+  background: #ffffff;
+  color: #000000;
+}
+
+.card {
+  color: #000000;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.card::after {
+  background: #ffffff;
+}
+.card--active {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.card--active::after {
+  background: #ffffff;
+}
+
+/* Theme color overrides for black/white */
+.theme-rose {
+  --accent: #000000;
+}
+
+.theme-lavender {
+  --accent: #000000;
+}
+
+.theme-sage {
+  --accent: #000000;
+}
+
+.theme-neutral {
+  --accent: #000000;
+}
+
+/* Ensure text is always black */
+.card h2,
+.card p,
+.card-headline,
+.card-title,
+.metric,
+.card-subtext {
+  color: #000000 !important;
+}
+
+.card-caption,
+.card-detail,
+.stat-label,
+.time-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 🌌 RESPONSIVE COSMOS */
+@media (max-width: 768px) {
+  body::after {
+    opacity: 0.3;
+    animation-duration: 80s;
+  }
+  
+  #wrapped::before {
+    opacity: 0.05;
+  }
+}
